@@ -32,12 +32,12 @@ def create_data_lists(budget):
             avg_change_pl = avg_change_pl + changes_in_pl[len(changes_in_pl)-1]
             avg_change_pl_total = avg_change_pl/len(changes_in_pl)
         
-        #Used to refer to the previous profit/loss item
+        #Used to refer to the previous profit/loss item in the CSV file
         previous_pl = int(row[1])
         #Moving counter along
         counter += 1
     
-    #setting values to return to then push to the publishing function
+    #setting values to return to then send to the publishing function for good function practice
     num_of_months = len(num_months)
     max_month = num_months[changes_in_pl.index(max(changes_in_pl))+1]
     max_increase = max(changes_in_pl)
@@ -45,19 +45,11 @@ def create_data_lists(budget):
     min_decrease = min(changes_in_pl)
     total = sum(profit_loss)
     avg_total = round(avg_change_pl_total,2)
-    
-   
-    '''print("What is going on :", total)
-    print(f"This is the number of months: {len(num_months)}")
-    print("The Average should be maybe this: " , round(avg_change_pl_total,2))
-    print("The Average should be maybe this: " , num_months[changes_in_pl.index(max(changes_in_pl))+1] , max(changes_in_pl))
-    print("The Average should be maybe this: " , num_months[changes_in_pl.index(min(changes_in_pl))+1] , min(changes_in_pl))
-    '''
 
     return num_of_months, avg_total, total, max_month, max_increase, min_month, min_decrease
 
 def pub_analysis(number_of_months, avg_total, total_pl, m_increase, g_increase, m_decrease, g_decrease):
-    #print(number_of_months, avg_total, total_pl, m_increase, g_increase, m_decrease, g_decrease)
+
 
     print("\nFinancial Analysis")
     print("---------------------------")
@@ -82,8 +74,7 @@ def pub_analysis(number_of_months, avg_total, total_pl, m_increase, g_increase, 
         fin_analysis.write("Greatest Decrease In Profits: " + str(m_decrease) + " ($"+ str(g_decrease)+ ")\n")
 
 
-
-#Set path for file
+#Set path for file for the Resource file
 budget_file_path = os.path.join("Resources", "budget_data.csv")
 
 #Opening the CSV file
