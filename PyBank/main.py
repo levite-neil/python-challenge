@@ -1,6 +1,5 @@
 import os, csv
 
-
 def create_data_lists(budget):
     
     #Declaring lists
@@ -82,7 +81,7 @@ with open(budget_file_path, encoding="utf-8") as budget_file:
     read_budget = csv.reader(budget_file, delimiter=",")
     header_row = next(read_budget)
     
-    #Calling the total_months function to calclulate the total months
+    #Calling the create_data_list function to perform calculations and list of data from the CSV file.
     number_of_months, avg_total, total_pl, m_increase, g_increase, m_decrease, g_decrease = create_data_lists(read_budget)
 
     #Using an publishing analysis function
