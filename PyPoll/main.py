@@ -7,7 +7,7 @@ def pub_analysis(summary, votes, winner):
     print("Total Votes: " + str(len(votes)))
     print("---------------------------")
     for candid in summary:       
-        print(candid + " " + str( round(summary[candid] / len(votes) * 100,3)) + "%" +  " " + "("+ str(summary[candid]) + ")")
+        print(candid + ": " + str( round(summary[candid] / len(votes) * 100,3)) + "%" +  " " + "("+ str(summary[candid]) + ")")
     print("---------------------------")
     print("Winner: " + str(list(summary.keys())[list(summary.values()).index(winner)]))
     print("---------------------------")
