@@ -1,7 +1,7 @@
 import os, csv
 
 def pub_analysis(summary, votes, winner):
-
+    #Print out the Election Results
     print("\nElection Results")
     print("---------------------------")
     print("Total Votes: " + str(len(votes)))
@@ -16,14 +16,14 @@ def pub_analysis(summary, votes, winner):
     #Set path for output file
     analysis_budg = os.path.join("Analysis", "election_analysis")
 
-    #Open the output file
+    #Open and write to the output file the election results
     with open(analysis_budg,'w') as elect_analysis:
         elect_analysis.write("\nElection Results\n")
         elect_analysis.write("---------------------------\n")
         elect_analysis.write("Total Votes: " + str(len(votes)) + "\n")
         elect_analysis.write("---------------------------\n")
         for candid in summary:       
-            elect_analysis.write(candid + " " + str( round(summary[candid] / len(votes) * 100,3)) + "%" +  " " + "("+ str(summary[candid]) + ")\n")
+            elect_analysis.write(candid + ": " + str( round(summary[candid] / len(votes) * 100,3)) + "%" +  " " + "("+ str(summary[candid]) + ")\n")
         elect_analysis.write("---------------------------\n")
         elect_analysis.write("Winner: " + str(list(summary.keys())[list(summary.values()).index(winner)])+"\n")
         elect_analysis.write("---------------------------\n")
@@ -46,10 +46,10 @@ elect_data = os.path.join("Resources","election_data.csv")
 with open(elect_data) as elect_csv:
     election_reader = csv.reader(elect_csv, delimiter=",")
     header_row = next(election_reader)
-
+    #Loop through the election results csv file
     for row in election_reader:
 
-        #Collect of candidate votes
+        #Collect candidate votes and place them into a dictionary
         if summary_dict.get(row[2]) == None: 
             summary_dict[row[2]] = 1
         else:
